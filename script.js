@@ -20,7 +20,7 @@ async function init() {
 
   let storyId = "";
 
-  const stories = await(await fetch("/near-and-far/stories.json")).json();
+  const stories = jsyaml.loadAll(await(await fetch("/near-and-far/stories.yaml")).text());
 
   BUTTONS.forEach((symbol) => {
     const key = document.createElement("button");
@@ -54,7 +54,8 @@ async function init() {
   function onHashChange() {
     const hash = location.hash.slice(1);
     if (hash) {
-      const found = stories.find((story) => story.id === hash);
+      const found = stories.find((story) => story.Id === hash);
+      console.log(found);
       if (found) {
         renderStory(found);
         transit(mainSection, storySection);
@@ -81,21 +82,22 @@ window.addEventListener("DOMContentLoaded", init);
 
 function renderStory(story) {
   const section = document.querySelector("section[name=story]");  
-  section.querySelector("h2").textContent = story.id;
-  section.querySelector(".text").textContent = story.text;  
+  section.querySelector("h2").textContent = story.Id;
+  section.querySelector(".text").textContent = story.Text;  
   section.querySelectorAll(".choices .variant").forEach((node, i) => {
     node.classList.remove("opened");
     const { 
-      requirenment: { type, value, additional } = {},
-      title = "",
-      text = "",
-      results = []
-    } = story.choices[i] || {};
-    node.querySelector(".requirenment").textContent = [`${type} ${value}`, additional].filter(Boolean).join(", ");
-    node.querySelector(".title").textContent = title;
-    node.querySelector(".text").textContent = text;
+      Req = "",
+      Short = "",
+      Text = "",
+      Results = []
+    } = story.Variants[i] || {};
+    const [, value] = Req.trim().split(" ");
+    node.querySelector(".requirenment").textContent = Req;
+    node.querySelector(".title").textContent = Short;
+    node.querySelector(".text").textContent = Text;
     node.querySelectorAll(".results div").forEach((n, l) => {
-      n.textContent = `${value + l * 2}: ${results[l]}`;
+      n.textContent = `${value + l * 2}: ${Results[l]}`;
     })
   });  
 
