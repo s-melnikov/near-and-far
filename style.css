@@ -19,16 +19,32 @@ body {
   font-size: 18px;
 	padding: 16px 32px;
 	color: #222;
-	height: 100%;
-	overflow: hidden;
+	min-height: 100%;
 }
 h1 {
 	text-align: center;
 }
 .container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	position: relative;
 	max-width: 560px;
-	margin: auto;
+	width: 100%;
+	margin: 0 auto;
+}
+.decor {
+	width: 100%;
+	background: url(/near-and-far/images/1.png);
+	background-position: center;
+	background-size: 100%;
+}
+.decor {
+	margin: 0 auto;
+	max-width: 320px;
+}
+.decor.bottom {
+	transform: rotate(180deg);
 }
 img {
 	display: block;
@@ -57,6 +73,7 @@ p {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin: auto;
 }
 button {
 	position: relative;
@@ -92,9 +109,15 @@ button:active {
 	border-color: transparent #222 transparent transparent;
 	transform: translate(-50%, -50%);
 }
+section[name=main] h1 {
+	margin: 0 0 1rem;
+} 
 section[name=not-found] button,	 
 section[name=story] button {	 
 	margin: auto;
+}
+section[name=story] button {
+	margin-bottom: 2rem;
 }
 section[name=story] h2 {
 	margin-bottom: 1rem;

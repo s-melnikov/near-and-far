@@ -54,8 +54,7 @@ async function init() {
   function onHashChange() {
     const hash = location.hash.slice(1);
     if (hash) {
-      const found = stories.find((story) => story.Id === hash);
-      console.log(found);
+      const found = stories.find((story) => story?.Id === hash);
       if (found) {
         renderStory(found);
         transit(mainSection, storySection);
