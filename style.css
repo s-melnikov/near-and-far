@@ -10,7 +10,7 @@ body {
 	margin: 0;
 	display: flex;
 	background-color: #f00;
-	background: url(/images/2.jpg);
+	background: url(/near-and-far/images/2.jpg);
 	background-size: cover;
 	backdrop-filter: blur(3px);
 	font-family: "Alegreya", serif;

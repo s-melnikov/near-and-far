@@ -20,7 +20,7 @@ async function init() {
 
   let storyId = "";
 
-  const stories = await(await fetch("/stories.json")).json();
+  const stories = await(await fetch("/near-and-far/stories.json")).json();
 
   BUTTONS.forEach((symbol) => {
     const key = document.createElement("button");
